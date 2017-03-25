@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
-                android:fitsSystemWindows="true"
                 android:clipChildren="false"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
@@ -10,5 +10,24 @@
         android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <com.pingan.samplecollection.ui.widget.CountTimeProgressView
+        android:id="@+id/countTimeProgressView"
+        android:layout_margin="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        app:background_Color="#FF7F00"
+        app:borderWidth="1dp"
+        app:markBallColor="#002FFF"
+        app:markBallFlag="true"
+        app:markBallWidth="2dp"
+        app:titleCenterColor="#ffffffff"
+        app:titleCenter="跳过"
+        app:titleCenterSize="12sp"
+        app:countTime="3000"
+        app:textStyle="second"
+        app:clockwise="true"
+        android:layout_width="48dp"
+        android:layout_height="48dp"/>
 
 </RelativeLayout>

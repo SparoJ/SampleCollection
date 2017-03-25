@@ -9,27 +9,51 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        manifestPlaceholders = [
+                GETUI_APP_ID : "a8w8Y76me69Akoj6EXnaI4",
+                GETUI_APP_KEY : "NP6YZfl7BE6SsO04oY64e6",
+                GETUI_APP_SECRET : "SQCaRXFMd79VO04DgFRQQ"
+        ]
+
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86_64"
+        }
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+//            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
         }
     }
 }
 
+def SUPPORT_VERSION = "25.0.1"
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     // 检查内存泄露的工具
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-
     //Rx 套餐
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.trello:rxlifecycle:1.0'
     compile 'com.trello:rxlifecycle-components:1.0'
-
     compile 'com.android.support:appcompat-v7:25.1.1'
+
+    compile 'com.android.support:recyclerview-v7:' + SUPPORT_VERSION
+    compile 'com.android.support:cardview-v7:' + SUPPORT_VERSION
+    //getui  reference
+    //        compile 'com.getui:sdk:2.9.5.0'
+    compile files('libs/GetuiSDK2.9.5.0.jar')
+
+    compile 'com.zhy:base-rvadapter:3.0.3'
 
 }
